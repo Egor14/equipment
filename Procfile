@@ -1,0 +1,1 @@
+web: gunicorn equipment_web.wsgi --log-file -
