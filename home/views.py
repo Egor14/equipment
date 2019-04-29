@@ -25,3 +25,33 @@ def entry(request):
             return HttpResponse('<h3>Неверный логин или пароль</h3>')
 
     return render(request, 'home/log.html')
+
+
+def add(request):
+    obj = Car(user=Dealer.objects.get(user=User.objects.get(id=request.session['_auth_user_id'])),
+              count=request.POST['count'], city=request.POST['city'], model=request.POST['model'],
+              year=request.POST['year'])
+    obj.save()
+    return redirect('/')
+
+
+def rem(request, id):
+    obj = Car.objects.get(id=id)
+    obj.delete()
+    return redirect('/')
+
+
+def plus(request, id):
+    obj = Car.objects.get(id=id)
+    obj.count += 1
+    obj.save()
+    return redirect('/')
+
+
+def minus(request, id):
+    obj = Car.objects.get(id=id)
+    if obj.count == 1:
+        return redirect('/rem/' + str(id))
+    obj.count -= 1
+    obj.save()
+    return redirect('/')
