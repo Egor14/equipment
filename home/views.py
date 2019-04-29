@@ -18,7 +18,9 @@ def start(request):
 def entry(request):
     if request.method == 'POST':
         user = authenticate(username=request.POST['user'], password=request.POST['pass'])
-        if user:
+        print(user)
+        print(type(user))
+        if user and user.is_active == True:
             login(request, user)
             return redirect('/')
         else:
@@ -55,3 +57,24 @@ def minus(request, id):
     obj.count -= 1
     obj.save()
     return redirect('/')
+
+
+def out(request):
+    logout(request)
+    print('sdsad')
+    return redirect('/')
+
+def sign(request):
+    return render(request, 'home/sign.html')
+
+def query(request):
+    print(request.POST['name'])
+    print(request.POST['user'])
+    print(request.POST['tel'])
+    print(request.POST['pass'])
+    obj = User(username=request.POST['user'], is_active=False)
+    obj.set_password(request.POST['pass'])
+    obj.save()
+    obj = Dealer(name=request.POST['name'], phone_number=request.POST['tel'], user=obj)
+    obj.save()
+    return HttpResponse('<h3>Ваша заявка отправлена, для подтвержения информации администратор свяжется с вами</h3>')

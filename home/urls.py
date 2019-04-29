@@ -9,4 +9,7 @@ urlpatterns = [
     path('rem/<int:id>', views.rem, name='rem'),
     path('plus/<int:id>', views.plus, name='plus'),
     path('minus/<int:id>', views.minus, name='minus'),
+    path('out/', views.out, name='out'),
+    path('sign/', views.sign, name='sign'),
+    path('query/', views.query, name='query'),
 ]

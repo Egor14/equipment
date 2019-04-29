@@ -5,13 +5,22 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <title>Title</title>
 </head>
-<body style="padding-left: 20%; padding-right: 20%">
-<h3>Hello world!</h3>
+<body>
+<nav class="navbar navbar-dark bg-dark">
+  <a class="navbar-brand" style="color: white">Название</a>
+  <form class="form-inline">
+      <h3 style="color: white">Аккаунт</h3>
+      <a href="/sign"><button class="btn btn-outline-success my-2 my-sm-0" type="button">Регистрация</button></a>
+      <a href="/out"><button class="btn btn-outline-danger my-2 my-sm-0" type="button">Выход</button></a>
+  </form>
+</nav>
+
+<div style="padding-left: 20%; padding-right: 20%;">
+       <br>
 <div class="container">
   <div class="row">
     <div class="col-6">
       {% for i in cars %}
-            <hr>
             <h4>Модель: {{ i.model }}</h4>
             <h4>Город: {{ i.city }}</h4>
             <h4>Год: {{ i.year }}</h4>
@@ -19,6 +28,7 @@
           <a href="/plus/{{ i.id }}"><button style="width: 40px; height: 40px"><img style="height: 20px; width: 20px;" src="../static/plus.png"></button></a>
           <a href="/minus/{{ i.id }}"><button style="width: 40px; height: 40px"><img style="height: 20px; width: 20px;" src="../static/minus.png"></button></a>
           <a href="/rem/{{ i.id }}"><button type="button" class="btn btn-danger">Удалить модель</button></a>
+          <hr>
       {% endfor %}
     </div>
     <div class="col-6">
@@ -47,6 +57,9 @@
     </div>
   </div>
 </div>
+</div>
+
+
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
