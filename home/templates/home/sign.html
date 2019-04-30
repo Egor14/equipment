@@ -15,7 +15,10 @@
   </form>
 </nav>
 <br>
-<div style="padding-left: 20%; padding-right: 20%;">
+<div >
+    <div class="container">
+  <div class="row">
+    <div class="col-12 col-sm-12 col-md-6 col-lg-6">
     <form action="/query/" method="post">
     {% csrf_token %}
   <div class="form-group">
@@ -38,6 +41,9 @@
 
   <button type="submit" class="btn btn-primary">Отправить</button>
 </form>
+</div>
+  </div>
+    </div>
 </div>
 
 
