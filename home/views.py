@@ -1,7 +1,6 @@
 from django.shortcuts import render
 from django.contrib.auth import authenticate, logout, login
 from django.shortcuts import redirect
-from django.http import HttpResponse
 from django.contrib.auth.models import User
 from .models import Dealer, Car
 
@@ -10,9 +9,10 @@ def start(request):
     if '_auth_user_id' not in request.session.keys():
         return redirect('/log')
     else:
-        cars = Car.objects.all().filter(
-            user=Dealer.objects.get(user=User.objects.get(id=request.session['_auth_user_id'])))
-        return render(request, 'home/mainPage.html', {'cars': cars})
+        user = Dealer.objects.get(user=User.objects.get(id=request.session['_auth_user_id']))
+        cars = Car.objects.all().filter(user=user)
+
+        return render(request, 'home/mainPage.html', {'cars': cars, 'user': user.name})
 
 
 def entry(request):
@@ -24,7 +24,7 @@ def entry(request):
             login(request, user)
             return redirect('/')
         else:
-            return HttpResponse('<h3>Неверный логин или пароль</h3>')
+            return render(request, 'home/log.html', {'message': 'Неверный логин или пароль'})
 
     return render(request, 'home/log.html')
 
@@ -64,8 +64,10 @@ def out(request):
     print('sdsad')
     return redirect('/')
 
+
 def sign(request):
     return render(request, 'home/sign.html')
+
 
 def query(request):
     obj = User(username=request.POST['user'], is_active=False)
@@ -73,4 +75,5 @@ def query(request):
     obj.save()
     obj = Dealer(name=request.POST['name'], phone_number=request.POST['tel'], user=obj)
     obj.save()
-    return HttpResponse('<h3>Ваша заявка отправлена, для подтвержения информации администратор свяжется с вами</h3>')
+    return render(request, 'home/log.html',
+                  {'message2': 'Ваша заявка отправлена, администратор свяжется с вами для подтвержения информации'})

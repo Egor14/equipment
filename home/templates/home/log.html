@@ -7,9 +7,8 @@
 </head>
 <body>
 <nav class="navbar navbar-dark bg-dark">
-  <a class="navbar-brand" style="color: white">Название</a>
+  <a class="navbar-brand" href="/" style="color: white">Главная</a>
   <form class="form-inline">
-      <h3 style="color: white">Аккаунт</h3>
       <a href="/sign"><button class="btn btn-outline-success my-2 my-sm-0" type="button">Регистрация</button></a>
       <a href="/out"><button class="btn btn-outline-danger my-2 my-sm-0" type="button">Выход</button></a>
   </form>
@@ -21,7 +20,8 @@
     <div class="col-12 col-sm-12 col-md-6 col-lg-6">
     <form action="" method="post">
     {% csrf_token %}
-
+<h5 style="color: red">{{ message }}</h5>
+        <h5 style="color: green">{{ message2 }}</h5>
   <div class="form-group">
       <h3>Заполните все поля для входа в систему</h3>
     <label for="exampleInputEmail1">Адрес электронной почты</label>
