@@ -5,16 +5,23 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <title>Title</title>
 </head>
-<body style="padding-left: 20%; padding-right: 20%">
-
-<form action="/query/" method="post">
+<body>
+<nav class="navbar navbar-dark bg-dark">
+  <a class="navbar-brand" style="color: white">Название</a>
+  <form class="form-inline">
+      <h3 style="color: white">Аккаунт</h3>
+      <a href="/sign"><button class="btn btn-outline-success my-2 my-sm-0" type="button">Регистрация</button></a>
+      <a href="/out"><button class="btn btn-outline-danger my-2 my-sm-0" type="button">Выход</button></a>
+  </form>
+</nav>
+<br>
+<div style="padding-left: 20%; padding-right: 20%;">
+    <form action="/query/" method="post">
     {% csrf_token %}
-    {{ c }}
   <div class="form-group">
       <h3>Заполните все поля для подачи заявки на регистрацию</h3>
-    <label for="exampleInputEmail1">Email address</label>
-    <input type="text" class="form-control" id="exampleInputEmail1" name="user" aria-describedby="emailHelp" placeholder="Enter email">
-    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+    <label for="exampleInputEmail1">Адрес электронной почты</label>
+    <input type="text" class="form-control" id="exampleInputEmail1" name="user" aria-describedby="emailHelp" placeholder="example@mail.ru">
   </div>
     <div class="form-group">
     <label for="exampleInputPassword1">Название</label>
@@ -25,12 +32,15 @@
     <input type="text" class="form-control" id="exampleInputPassword1" name="tel" placeholder="+7(999)99-99">
   </div>
   <div class="form-group">
-    <label for="exampleInputPassword1">Password</label>
-    <input type="password" class="form-control" id="exampleInputPassword1" name="pass" placeholder="Password">
+    <label for="exampleInputPassword1">Пароль</label>
+    <input type="password" class="form-control" id="exampleInputPassword1" name="pass" placeholder="********">
   </div>
 
   <button type="submit" class="btn btn-primary">Отправить</button>
 </form>
+</div>
+
+
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>

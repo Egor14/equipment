@@ -68,10 +68,6 @@ def sign(request):
     return render(request, 'home/sign.html')
 
 def query(request):
-    print(request.POST['name'])
-    print(request.POST['user'])
-    print(request.POST['tel'])
-    print(request.POST['pass'])
     obj = User(username=request.POST['user'], is_active=False)
     obj.set_password(request.POST['pass'])
     obj.save()
