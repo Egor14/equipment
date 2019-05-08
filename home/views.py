@@ -3,6 +3,7 @@ from django.contrib.auth import authenticate, logout, login
 from django.shortcuts import redirect
 from django.contrib.auth.models import User
 from .models import Dealer, Car
+import re
 
 
 def start(request):
@@ -18,8 +19,6 @@ def start(request):
 def entry(request):
     if request.method == 'POST':
         user = authenticate(username=request.POST['user'], password=request.POST['pass'])
-        print(user)
-        print(type(user))
         if user and user.is_active == True:
             login(request, user)
             return redirect('/')
@@ -30,9 +29,15 @@ def entry(request):
 
 
 def add(request):
+    try:
+        if int(request.POST['count']) <= 0 or int(request.POST['year']) < 1900 or request.POST['city'].strip() == '' or \
+                request.POST['model'].strip() == '':
+            return redirect('/')
+    except:
+        return redirect('/')
     obj = Car(user=Dealer.objects.get(user=User.objects.get(id=request.session['_auth_user_id'])),
-              count=request.POST['count'], city=request.POST['city'], model=request.POST['model'],
-              year=request.POST['year'])
+              count=int(request.POST['count']), city=request.POST['city'], model=request.POST['model'],
+              year=int(request.POST['year']))
     obj.save()
     return redirect('/')
 
@@ -70,10 +75,18 @@ def sign(request):
 
 
 def query(request):
-    obj = User(username=request.POST['user'], is_active=False)
-    obj.set_password(request.POST['pass'])
-    obj.save()
-    obj = Dealer(name=request.POST['name'], phone_number=request.POST['tel'], user=obj)
-    obj.save()
-    return render(request, 'home/log.html',
-                  {'message2': 'Ваша заявка отправлена, администратор свяжется с вами для подтвержения информации'})
+    if not re.match(r'.+@.+', request.POST['user']) or request.POST['name'].strip() == '' or request.POST[
+        'tel'].strip() == '' or request.POST['pass'].strip() == '':
+        return render(request, 'home/sign.html',
+                      {'message2': 'Неверно заполнены некоторые поля'})
+    try:
+        obj = User(username=request.POST['user'], is_active=False)
+        obj.set_password(request.POST['pass'])
+        obj.save()
+        obj = Dealer(name=request.POST['name'], phone_number=request.POST['tel'], user=obj)
+        obj.save()
+        return render(request, 'home/log.html',
+                      {'message2': 'Ваша заявка отправлена, администратор свяжется с вами для подтвержения информации'})
+    except:
+        return render(request, 'home/sign.html',
+                      {'message2': 'Пользователь с таким адресом электронной почты уже подавал заявку'})

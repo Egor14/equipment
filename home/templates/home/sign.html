@@ -21,21 +21,22 @@
     <form action="/query/" method="post">
     {% csrf_token %}
   <div class="form-group">
+      <h5 style="color: red">{{ message2 }}</h5>
       <h3>Заполните все поля для подачи заявки на регистрацию</h3>
     <label for="exampleInputEmail1">Адрес электронной почты</label>
-    <input type="text" class="form-control" id="exampleInputEmail1" name="user" aria-describedby="emailHelp" placeholder="example@mail.ru">
+    <input type="text" class="form-control" id="exampleInputEmail1" name="user" aria-describedby="emailHelp" placeholder="example@mail.ru" required>
   </div>
     <div class="form-group">
     <label for="exampleInputPassword1">Название</label>
-    <input type="text" class="form-control" id="exampleInputPassword1" name="name" placeholder="Введите название фирмы">
+    <input type="text" class="form-control" id="exampleInputPassword1" name="name" placeholder="Введите название фирмы" required>
   </div>
     <div class="form-group">
     <label for="exampleInputPassword1">Номер телефона</label>
-    <input type="text" class="form-control" id="exampleInputPassword1" name="tel" placeholder="+7(999)99-99">
+    <input type="text" class="form-control" id="exampleInputPassword1" name="tel" placeholder="+7(999)99-99" required>
   </div>
   <div class="form-group">
     <label for="exampleInputPassword1">Пароль</label>
-    <input type="password" class="form-control" id="exampleInputPassword1" name="pass" placeholder="********">
+    <input type="password" class="form-control" id="exampleInputPassword1" name="pass" placeholder="********" required>
   </div>
 
   <button type="submit" class="btn btn-primary">Отправить</button>
