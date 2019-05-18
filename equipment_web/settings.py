@@ -20,12 +20,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'fo%-63mh*dmntnyv^^5s+g#)on#jv9^u^r#uk_3i-9swo00i@o'
+SECRET_KEY = os.environ['KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['beta-equipment.herokuapp.com', '127.0.0.1', 'sklad-kamaz.herokuapp.com']
+ALLOWED_HOSTS = ['beta-equipment.herokuapp.com', '127.0.0.1', 'sklad-kamaz.herokuapp.com', 'www.sklad-kamaz.ru']
 
 
 # Application definition
@@ -79,11 +79,11 @@ WSGI_APPLICATION = 'equipment_web.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'dfmbo8t0phjo3t',
-        'USER' : 'bdulsoriirvcuq',
-        'PASSWORD' : '5b1a04eeb444d1cdc3a525aa81f0dd25cbde3bcaaadae436e90a3d07349855a2',
-        'HOST' : 'ec2-54-228-252-67.eu-west-1.compute.amazonaws.com',
-        'PORT' : '5432'
+        'NAME': os.environ['NAME'],
+        'USER' : os.environ['USER'],
+        'PASSWORD' : os.environ['PASSWORD'],
+        'HOST' : os.environ['HOST'],
+        'PORT' : os.environ['PORT']
     }
 }
 
