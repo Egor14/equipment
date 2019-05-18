@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = os.environ['KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['beta-equipment.herokuapp.com', '127.0.0.1', 'sklad-kamaz.herokuapp.com', 'www.sklad-kamaz.ru']
 
