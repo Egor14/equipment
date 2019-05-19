@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <title>Title</title>
+    <title>Sklad</title>
 </head>
 <body>
 <nav class="navbar navbar-dark bg-dark">
@@ -25,8 +25,8 @@
             <h4>Город: {{ i.city }}</h4>
             <h4>Год: {{ i.year }}</h4>
             <h4>Количество единиц: {{ i.count }}</h4>
-          <a href="/plus/{{ i.id }}"><button style="width: 40px; height: 40px"><img style="height: 20px; width: 20px;" src="../static/plus.png"></button></a>
-          <a href="/minus/{{ i.id }}"><button style="width: 40px; height: 40px"><img style="height: 20px; width: 20px;" src="../static/minus.png"></button></a>
+          <a href="/plus/{{ i.id }}"><button style="width: 50px; height: 50px"><img style="height: 20px; width: 20px;" src="../static/plus.png"></button></a>
+          <a href="/minus/{{ i.id }}"><button style="width: 50px; height: 50px"><img style="height: 20px; width: 20px;" src="../static/minus.png"></button></a>
           <a href="/rem/{{ i.id }}"><button type="button" class="btn btn-danger">Удалить модель</button></a>
           <hr>
       {% endfor %}

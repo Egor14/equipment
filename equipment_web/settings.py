@@ -25,7 +25,8 @@ SECRET_KEY = os.environ['KEY']
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['beta-equipment.herokuapp.com', '127.0.0.1', 'sklad-kamaz.herokuapp.com', 'www.sklad-kamaz.ru']
+
+ALLOWED_HOSTS = ['beta-equipment.herokuapp.com', '127.0.0.1', 'sklad-kamaz.herokuapp.com', 'www.sklad-kamaz.ru', 'sklad-kamaz.ru']
 
 
 # Application definition
