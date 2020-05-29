@@ -20,13 +20,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ['KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 
-ALLOWED_HOSTS = ['beta-equipment.herokuapp.com', '127.0.0.1', 'sklad-kamaz.herokuapp.com', 'www.sklad-kamaz.ru', 'sklad-kamaz.ru']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -77,16 +76,6 @@ WSGI_APPLICATION = 'equipment_web.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': os.environ['NAME'],
-        'USER' : os.environ['USER'],
-        'PASSWORD' : os.environ['PASSWORD'],
-        'HOST' : os.environ['HOST'],
-        'PORT' : 5432
-    }
-}
 
 
 # Password validation
@@ -127,3 +116,9 @@ USE_TZ = True
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
+
+
+try:
+    from gold_coin.settings_local import *
+except ImportError:
+    print('Cannot import local settings', flush=True)
