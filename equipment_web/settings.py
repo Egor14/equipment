@@ -119,6 +119,6 @@ STATIC_URL = '/static/'
 
 
 try:
-    from gold_coin.settings_local import *
+    from equipment_web.settings_local import *
 except ImportError:
     print('Cannot import local settings', flush=True)
